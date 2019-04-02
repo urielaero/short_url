@@ -23,20 +23,4 @@ defmodule TinyWeb.UrlApiController do
     url = TinyUrl.get_url!(id)
     render(conn, "show.json", url_api: url)
   end
-
-  def update(conn, %{"id" => id, "url" => url_params}) do
-    url = TinyUrl.get_url!(id)
-
-    with {:ok, %Url{} = url} <- TinyUrl.update_url(url, url_params) do
-      render(conn, "show.json", url_api: url)
-    end
-  end
-
-  def delete(conn, %{"id" => id}) do
-    url = TinyUrl.get_url!(id)
-
-    with {:ok, %Url{}} <- TinyUrl.delete_url(url) do
-      send_resp(conn, :no_content, "")
-    end
-  end
 end
