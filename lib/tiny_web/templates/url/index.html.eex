@@ -1,0 +1,30 @@
+<h1>Listing Urls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Alias</th>
+      <th>Counter</th>
+      <th>Alive</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for url <- @urls do %>
+    <tr>
+      <td><%= url.url %></td>
+      <td><%= get_url_alias(url.alias) %></td>
+      <td><%= url.counter %></td>
+      <td><%= url.alive %></td>
+
+      <td>
+        <%= link "Show", to: Routes.url_path(@conn, :show, url) %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Url", to: Routes.url_path(@conn, :new) %></span>

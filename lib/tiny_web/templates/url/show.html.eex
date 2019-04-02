@@ -1,0 +1,27 @@
+<h1>Show Url</h1>
+
+<ul>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @url.url %>
+  </li>
+
+  <li>
+    <strong>Alias:</strong>
+    <%= get_url_alias(@url.alias) %>
+  </li>
+
+  <li>
+    <strong>Counter:</strong>
+    <%= @url.counter %>
+  </li>
+
+  <li>
+    <strong>Alive:</strong>
+    <%= @url.alive %>
+  </li>
+
+</ul>
+
+<span><%= link "Back", to: Routes.url_path(@conn, :index) %></span>
