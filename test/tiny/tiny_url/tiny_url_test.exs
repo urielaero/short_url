@@ -25,6 +25,9 @@ defmodule Tiny.TinyUrlTest do
       assert url.alias != url.url
       assert url.alive != nil
       assert url.url == "http://someurl.com/"
+      now = DateTime.utc_now()
+      available = DateTime.compare(url.alive, now)
+      assert available == :gt
     end
 
     test "create_url/1 with valid data and alias conserve alias" do
