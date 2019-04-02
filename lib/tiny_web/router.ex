@@ -22,7 +22,9 @@ defmodule TinyWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", TinyWeb do
-  #   pipe_through :api
-  # end
+  scope "/api/v1", TinyWeb do
+    pipe_through :api
+
+    resources "/urls", UrlApiController, only: [:show, :new, :create, :index]
+  end
 end
